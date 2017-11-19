@@ -5,7 +5,7 @@
 
 <div class="content">
 
-    <form class="form-horizontal loginDiv" action="/main" method="post">
+    <form class="form-horizontal loginDiv" action="/login/in" method="post">
         <div class="control-group">
             <label class="control-label" for="inputLogin">Login:</label>
             <div class="controls">

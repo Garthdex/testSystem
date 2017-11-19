@@ -31,7 +31,7 @@ public class LoginController {
         return "page/login";
     }
 
-    @RequestMapping(value = "main")
+    @RequestMapping(value = "login/in")
     public String signIn(@RequestParam String login, @RequestParam String password, Model model) {
 
         return "page/main";
