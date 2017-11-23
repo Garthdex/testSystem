@@ -13,7 +13,6 @@
 <link href="<c:url value="/resources/css/component/footer.css"/>" rel="stylesheet" type="text/css">
 <link href="<c:url value="/resources/css/component/login.css"/>" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/resources/js/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/resources/js/Parsley.js-2.8.0/dist/parsley.min.js" type="text/javascript"></script>
 
 <div>
 

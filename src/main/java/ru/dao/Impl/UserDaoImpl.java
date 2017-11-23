@@ -1,8 +1,10 @@
 package ru.dao.Impl;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import ru.model.User;
 import ru.dao.UserDao;
@@ -43,6 +45,16 @@ public class UserDaoImpl implements UserDao {
     public User getUserById(long id) {
         Session session = this.sessionFactory.getCurrentSession();
         User user = (User)session.load(User.class, new Long(id));
+
+        return user;
+    }
+
+    public User getUserByLogin(String login) {
+        Session session = this.sessionFactory.getCurrentSession();
+        User user;
+        Criteria userCriteria = session.createCriteria(User.class);
+        userCriteria.add(Restrictions.eq("login", login));
+        user = (User) userCriteria.uniqueResult();
 
         return user;
     }

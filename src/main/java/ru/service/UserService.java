@@ -44,6 +44,11 @@ public class UserService {
     }
 
     @Transactional
+    public User getUserByLogin(String login) {
+        return this.userDao.getUserByLogin(login);
+    }
+
+    @Transactional
     public List<User> getUserList() {
         return this.userDao.getUserList();
     }
