@@ -1,11 +1,7 @@
 package ru.model;
 
-
 import javax.persistence.*;
 
-/**
- * Created by Anton on 27.10.2017.
- */
 @Entity
 @Table(name = "user")
 public class User {

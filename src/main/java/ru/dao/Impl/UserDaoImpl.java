@@ -5,6 +5,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.model.User;
 import ru.dao.UserDao;
@@ -12,12 +13,10 @@ import ru.dao.UserDao;
 
 import java.util.List;
 
-/**
- * Created by Anton on 29.10.2017.
- */
 @Repository
 public class UserDaoImpl implements UserDao {
 
+    @Autowired
     private SessionFactory sessionFactory;
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -62,7 +61,7 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings(value = "unchecked")
     public List<User> getUserList() {
         Session session = this.sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from User");
+        Query query = session.createQuery("from ru.model.User");
         List<User> userList = query.list();
 
         return userList;

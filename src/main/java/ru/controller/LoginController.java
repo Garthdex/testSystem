@@ -3,15 +3,12 @@ package ru.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.model.User;
+import ru.service.TestService;
 import ru.service.UserService;
 import ru.service.holder.UserHolder;
-
-import java.util.List;
 
 /**
  * Created by Anton on 27.10.2017.
@@ -23,12 +20,17 @@ public class LoginController {
     private static final String ERROR_MASSAGE_USER_EXIST = "This login is already used. Please try again";
     private static final String SUCCESS_REGISTRATION = "You has registered! Please sign in";
     private static final String ROLE = "role";
+    private static final String LOGIN = "login";
+    private static final String TEST_LIST = "testList";
 
     @Autowired
     private UserService userService;
 
     @Autowired
     private UserHolder userHolder;
+
+    @Autowired
+    private TestService testService;
 
     @RequestMapping(value = "/")
     public String initData(){
@@ -48,8 +50,12 @@ public class LoginController {
             return "page/login";
         }
 
+        userHolder.setLogin(user.getLogin());
         userHolder.setRole(user.getRole());
+
+        model.addAttribute(LOGIN, userHolder.getLogin());
         model.addAttribute(ROLE, userHolder.getRole());
+        model.addAttribute(TEST_LIST, testService.getTestList());
         return "page/main";
     }
 
