@@ -22,6 +22,7 @@ public class LoginController {
     private static final String ERROR_MESSAGE_PASSWORD = "Password is incorrect";
     private static final String ERROR_MASSAGE_USER_EXIST = "This login is already used. Please try again";
     private static final String SUCCESS_REGISTRATION = "You has registered! Please sign in";
+    private static final String ROLE = "role";
 
     @Autowired
     private UserService userService;
@@ -48,6 +49,7 @@ public class LoginController {
         }
 
         userHolder.setRole(user.getRole());
+        model.addAttribute(ROLE, userHolder.getRole());
         return "page/main";
     }
 

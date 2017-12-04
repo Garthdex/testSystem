@@ -12,6 +12,7 @@
 <link href="<c:url value="/resources/css/component/header.css"/>" rel="stylesheet" type="text/css">
 <link href="<c:url value="/resources/css/component/footer.css"/>" rel="stylesheet" type="text/css">
 <link href="<c:url value="/resources/css/component/login.css"/>" rel="stylesheet" type="text/css">
+<link href="<c:url value="/resources/css/component/main.css"/>" rel="stylesheet" type="text/css">
 <script src="${pageContext.request.contextPath}/resources/js/jQuery/jquery-3.2.1.min.js" type="text/javascript"></script>
 
 <div>
