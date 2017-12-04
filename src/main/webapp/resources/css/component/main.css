@@ -4,3 +4,6 @@ a.logOut {
 h2.welcome {
     display: inline-block;
 }
+button.test {
+    display: table-caption;
+}

@@ -31,7 +31,7 @@ public class TestDaoImpl implements TestDao {
 
     public void deleteTest(long id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Test test = (Test)session.load(Test.class, new Long(id));
+        Test test = (Test)session.get(Test.class, new Long(id));
 
         if (test != null) {
             session.delete(test);
@@ -40,7 +40,7 @@ public class TestDaoImpl implements TestDao {
 
     public Test getTestById(long id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Test test = (Test)session.load(Test.class, new Long(id));
+        Test test = (Test)session.get(Test.class, new Long(id));
 
         return test;
     }

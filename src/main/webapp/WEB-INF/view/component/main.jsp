@@ -24,9 +24,12 @@
                 <div class="buttonTests">
                     <c:if test="${!empty testList}">
                         <c:forEach items="${testList}" var="test">
-                            <a href="${pageContext.request.contextPath}/test/${test.id}" class = "test btn btn-large btn-primary">
-                                Enter test "${test.name}"
-                            </a>
+                            <form class="goTest" action="${pageContext.request.contextPath}/main/test" method="post">
+                                <input name="idTest" value="${test.id}" hidden>
+                                <button type="submit" class = "test btn btn-large btn-primary">
+                                    Enter test "${test.name}"
+                                </button>
+                            </form>
                         </c:forEach>
 
                     </c:if>

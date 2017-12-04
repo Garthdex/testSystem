@@ -1,7 +1,7 @@
-DROP DATABASE `test_systems` ;
+DROP DATABASE `test_system` ;
 
 
-CREATE SCHEMA `test_systems` ;
+CREATE SCHEMA `test_system` ;
 
 CREATE TABLE `test_system`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,

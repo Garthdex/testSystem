@@ -8,9 +8,6 @@ import ru.dao.UserDao;
 
 import java.util.List;
 
-/**
- * Created by Anton on 29.10.2017.
- */
 @Service
 public class UserService {
 
