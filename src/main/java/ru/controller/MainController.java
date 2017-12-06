@@ -50,6 +50,7 @@ public class MainController {
     @RequestMapping("logout")
     public String logOut() {
         userHolder.setRole(null);
+        userHolder.setLogin(null);
         return "redirect:/";
     }
 
