@@ -2,9 +2,11 @@ package ru.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import ru.model.Answer;
 import ru.model.Question;
 import ru.model.Test;
@@ -56,6 +58,7 @@ public class MainController {
 
     @RequestMapping("main/test")
     public String goTest(@RequestParam long idTest, Model model) {
+        userHolder.setIdTest(idTest);
         List<QuestionViewModel> questionViewModel = new ArrayList<QuestionViewModel>();
         TestViewModel testViewModel = new TestViewModel();
 
@@ -76,6 +79,25 @@ public class MainController {
 
         model.addAttribute(TEST_VIEW, testViewModel);
         return "page/test";
+    }
+
+    @RequestMapping("main/test/done")
+    @ResponseBody
+    public List<Integer> getAnswers(@RequestBody List<Integer> answers) {
+        double correctAnswers = 0;
+        double percentResult = 0;
+        double sizeTest = (double) questionService.getQuestionsByTestId(userHolder.getIdTest()).size();
+
+        for (int i = 0; i < answers.size(); i++) {
+            if (answerService.getAnswerById(answers.get(i)).isCorrect()) {
+                correctAnswers += 1;
+            }
+        }
+
+        if (correctAnswers != 0) {
+            percentResult = (correctAnswers / sizeTest) * 100;
+        }
+        return answers;
     }
 
 }

@@ -21,4 +21,9 @@ public class AnswerService {
     public List<Answer> getAnswersByQuestionId(long idQuestion) {
         return this.answerDao.getAnswersByQuestionId(idQuestion);
     }
+
+    @Transactional
+    public Answer getAnswerById(long id) {
+        return this.answerDao.getAnswerById(id);
+    }
 }

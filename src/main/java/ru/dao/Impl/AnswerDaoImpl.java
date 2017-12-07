@@ -30,4 +30,11 @@ public class AnswerDaoImpl implements AnswerDao {
 
         return answerList;
     }
+
+    public Answer getAnswerById(long id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Answer answer = (Answer)session.get(Answer.class, new Long(id));
+
+        return answer;
+    }
 }

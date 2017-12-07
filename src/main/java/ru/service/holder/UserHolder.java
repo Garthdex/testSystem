@@ -6,13 +6,15 @@ import org.springframework.stereotype.Service;
 public class UserHolder {
     private String login;
     private String role;
+    private long idTest;
 
     public UserHolder() {
     }
 
-    public UserHolder(String login, String role) {
+    public UserHolder(String login, String role, long idTest) {
         this.login = login;
         this.role = role;
+        this.idTest = idTest;
     }
 
     public String getLogin() {
@@ -29,5 +31,13 @@ public class UserHolder {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public long getIdTest() {
+        return idTest;
+    }
+
+    public void setIdTest(long idTest) {
+        this.idTest = idTest;
     }
 }
