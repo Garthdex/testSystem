@@ -7,3 +7,6 @@ h2.welcome {
 button.test {
     display: table-caption;
 }
+div.completedArea {
+    display: inline-block;
+}

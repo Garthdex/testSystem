@@ -1,28 +1,29 @@
 $(document).ready(function(){
-    $.each($("button:submit"), function( index, value ) {
-        content = '';
+    $.each($(".testBlock"), function( index, value ) {
+        var content = '';
+        var result = {
+            'idCompletedTest' : value.id,
+            'idCompletedUser': $(".welcome").data("id"),
+        };
         $.ajax({
             type: "POST",
             url: window.location.origin + "/testSystem/main/getCompleteTest",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
-            data: {
-                'idTest' : value.id,
-                'idUser': $(".welcome").data("id")
-                },
+            data: JSON.stringify(result),
             cache: false,
             success: function (s) {
                 content += '<div class="alert alert-success">\n' +
-                    'The test was passed on' + s.percent + '\n' +
+                    'The test was passed on ' + s.percent + '%' + '\n' +
                     '</div>\n';
-                $(".completedArea").html(content);
-                $(".test").prop("disabled", true);
+                $(value).children(".completedArea").html(content);
+                $(value).children(".test").prop("disabled", true);
             },
             error: function (e) {
                 content += '<div class="alert alert-info">\n' +
                     'The test not yet passed' + '\n' +
                     '</div>\n';
-                $(".completedArea").html(content);
+                $(value).children(".completedArea").html(content);
             }
         });
     });

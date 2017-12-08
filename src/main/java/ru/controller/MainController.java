@@ -60,6 +60,7 @@ public class MainController {
     public String logOut() {
         userHolder.setRole(null);
         userHolder.setLogin(null);
+        userHolder.setId(0);
         return "redirect:/";
     }
 
@@ -113,7 +114,7 @@ public class MainController {
 
     @RequestMapping("main/getCompleteTest")
     @ResponseBody
-    public CompletedTest getCompleteTest(@RequestBody long idTest, @RequestBody long idUser) {
-        return completedTestService.getCompletedTestByIds(idTest, idUser);
+    public CompletedTest getCompleteTest(@RequestBody CompletedTest result) {
+        return completedTestService.getCompletedTestByIds(result.getIdCompletedTest(), result.getIdCompletedUser());
     }
 }

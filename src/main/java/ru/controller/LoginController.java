@@ -53,6 +53,7 @@ public class LoginController {
 
         userHolder.setLogin(user.getLogin());
         userHolder.setRole(user.getRole());
+        userHolder.setId(user.getId());
 
         model.addAttribute(LOGIN, userHolder.getLogin());
         model.addAttribute(ROLE, userHolder.getRole());

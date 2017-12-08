@@ -27,10 +27,12 @@
                         <c:forEach items="${testList}" var="test">
                             <form class="goTest" action="${pageContext.request.contextPath}/main/test" method="post">
                                 <input name="idTest" value="${test.id}" hidden>
-                                <button type="submit" class = "test btn btn-large btn-primary" id="${test.id}">
-                                    Enter test "${test.name}"
-                                </button>
-                                <div class="completedArea"></div>
+                                <div class = "testBlock" id="${test.id}">
+                                    <button type="submit" class = "test btn btn-large btn-primary">
+                                        Enter test "${test.name}"
+                                    </button>
+                                    <div class="completedArea"></div>
+                                </div>
                             </form>
                         </c:forEach>
 

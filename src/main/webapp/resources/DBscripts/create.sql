@@ -46,17 +46,6 @@ CREATE TABLE `test_system`.`answer` (
 
 CREATE TABLE `test_system`.`completed_test` (
   `id_test` INT NOT NULL,
-  `id_user` INT NOT NULL,
-  `percent` DOUBLE NOT NULL,
-  UNIQUE INDEX `id_test_UNIQUE` (`id_test` ASC),
-  INDEX `id_user_idx` (`id_user` ASC),
-  CONSTRAINT `id_completed_test`
-  FOREIGN KEY (`id_test`)
-  REFERENCES `test_system`.`test` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `id_completed_user`
-  FOREIGN KEY (`id_user`)
-  REFERENCES `test_system`.`user` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE);
+  `id_user` INT NULL,
+  `percent` DOUBLE NULL,
+  PRIMARY KEY (`id_test`));
