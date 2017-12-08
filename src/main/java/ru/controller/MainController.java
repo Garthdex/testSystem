@@ -8,12 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.model.Answer;
+import ru.model.CompletedTest;
 import ru.model.Question;
 import ru.model.Test;
 import ru.model.view.AnswerViewModel;
 import ru.model.view.QuestionViewModel;
 import ru.model.view.TestViewModel;
 import ru.service.AnswerService;
+import ru.service.CompletedTestService;
 import ru.service.QuestionService;
 import ru.service.TestService;
 import ru.service.holder.UserHolder;
@@ -25,6 +27,7 @@ import java.util.List;
 public class MainController {
     private static final String ROLE = "role";
     private static final String LOGIN = "login";
+    private static final String ID = "id";
     private static final String TEST_LIST = "testList";
     private static final String TEST_VIEW = "testView";
 
@@ -40,11 +43,15 @@ public class MainController {
     @Autowired
     private AnswerService answerService;
 
+    @Autowired
+    private CompletedTestService completedTestService;
+
     @RequestMapping("main")
     public String initData(Model model) {
 
         model.addAttribute(LOGIN, userHolder.getLogin());
         model.addAttribute(ROLE, userHolder.getRole());
+        model.addAttribute(ID, userHolder.getId());
         model.addAttribute(TEST_LIST, testService.getTestList());
         return "page/main";
     }
@@ -97,7 +104,16 @@ public class MainController {
         if (correctAnswers != 0) {
             percentResult = (correctAnswers / sizeTest) * 100;
         }
+
+        completedTestService.setCompletedTest(new CompletedTest(userHolder.getIdTest(), userHolder.getId(), percentResult));
+
+        userHolder.setIdTest(0);
         return answers;
     }
 
+    @RequestMapping("main/getCompleteTest")
+    @ResponseBody
+    public CompletedTest getCompleteTest(@RequestBody long idTest, @RequestBody long idUser) {
+        return completedTestService.getCompletedTestByIds(idTest, idUser);
+    }
 }

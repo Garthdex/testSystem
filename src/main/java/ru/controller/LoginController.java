@@ -21,6 +21,7 @@ public class LoginController {
     private static final String SUCCESS_REGISTRATION = "You has registered! Please sign in";
     private static final String ROLE = "role";
     private static final String LOGIN = "login";
+    private static final String ID = "id";
     private static final String TEST_LIST = "testList";
 
     @Autowired
@@ -55,6 +56,7 @@ public class LoginController {
 
         model.addAttribute(LOGIN, userHolder.getLogin());
         model.addAttribute(ROLE, userHolder.getRole());
+        model.addAttribute(ID, userHolder.getId());
         model.addAttribute(TEST_LIST, testService.getTestList());
         return "page/main";
     }

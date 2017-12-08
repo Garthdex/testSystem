@@ -53,6 +53,7 @@
                 <value>ru.model.Test</value>
                 <value>ru.model.Question</value>
                 <value>ru.model.Answer</value>
+                <value>ru.model.CompletedTest</value>
             </list>
         </property>
         <property name="hibernateProperties">

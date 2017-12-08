@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserHolder {
+    private long id;
     private String login;
     private String role;
     private long idTest;
@@ -11,10 +12,19 @@ public class UserHolder {
     public UserHolder() {
     }
 
-    public UserHolder(String login, String role, long idTest) {
+    public UserHolder(long id, String login, String role, long idTest) {
+        this.id = id;
         this.login = login;
         this.role = role;
         this.idTest = idTest;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getLogin() {
