@@ -45,7 +45,8 @@ CREATE TABLE `test_system`.`answer` (
     ON UPDATE CASCADE);
 
 CREATE TABLE `test_system`.`completed_test` (
-  `id_test` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
+  `id_test` INT NULL,
   `id_user` INT NULL,
   `percent` DOUBLE NULL,
-  PRIMARY KEY (`id_test`));
+  PRIMARY KEY (`id`));

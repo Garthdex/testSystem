@@ -1,15 +1,16 @@
 package ru.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "completed_test")
 public class CompletedTest {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private long id;
+
     @Column(name = "id_test")
     private long idCompletedTest;
 
